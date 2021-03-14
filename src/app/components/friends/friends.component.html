@@ -1,0 +1,22 @@
+<button mat-stroked-button color="primary" [routerLink]="['/friends/search']">Find friends</button>
+<button mat-stroked-button color="primary" [routerLink]="['/friends/requests']">Friend requests</button>
+<mat-card class="example-card">
+  <div *ngFor="let friend of friends" (click)="chooseProfile(friend.user.id)">
+    <div>
+      <br>
+      <mat-divider></mat-divider>
+      <mat-card-header class="friend-card">
+        <div mat-card-avatar class="friend-header-image"></div>
+        <mat-card-title>{{friend.user.firstName}}</mat-card-title>
+        <mat-card-subtitle>{{friend.user.lastName}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+  <mat-paginator [length]="length"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="handlePageEvent($event)">
+  </mat-paginator>
+</mat-card>

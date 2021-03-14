@@ -1,0 +1,37 @@
+<div fxLayoutAlign="center center">
+
+  <mat-card class="box">
+
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="emailForm">
+      <div class="login-wrapper">
+        <mat-card-content>
+          <mat-form-field appearance="standard">
+            <input matInput formControlName="email" type="text" placeholder="Email">
+            <small *ngIf="email.touched && email.errors">
+              <div *ngIf="email.errors.email && !email.errors.required">Please enter a valid Email.</div>
+              <div *ngIf="email.errors.required">An Email is required.</div>
+            </small>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-content>
+          <mat-form-field appearance="standard">
+            <input matInput formControlName="password" type="password" placeholder="Password">
+            <small *ngIf="password.touched && password.errors">
+              <div *ngIf="password.errors.minlength">Password should be minimum 4 characters.</div>
+              <div *ngIf="password.errors.required">A Password is required is required.</div>
+            </small>
+          </mat-form-field>
+        </mat-card-content>
+        <small *ngIf="error">{{error}}</small>
+      </div>
+      <button mat-stroked-button color="primary" [routerLink]="['/signup']">Signup</button>
+      <button mat-stroked-button color="accent" class="btn-block" (click)="login()">Login</button>
+    </form>
+
+  </mat-card>
+
+</div>

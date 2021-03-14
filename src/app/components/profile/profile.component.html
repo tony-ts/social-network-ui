@@ -1,0 +1,24 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <mat-card class="example-card" *ngIf="user">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+      <mat-card-subtitle>Human being</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div>Age: {{userAge}}</div>
+      <div>City: {{user.city}}</div>
+      <div>Gender: {{user.gender}}</div>
+      <div>Interests: {{user.interests}}</div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div [ngSwitch]="friendshipStatus">
+        <button mat-button color="accent" *ngSwitchCase="FriendshipStatus.ACCEPTED" (click)="endFriendship()">UNFRIEND</button>
+        <button mat-button color="accent" *ngSwitchCase="FriendshipStatus.INCOMING" (click)="acceptFriendship()">ACCEPT REQUEST</button>
+        <button mat-button color="accent" *ngSwitchCase="FriendshipStatus.PENDING" (click)="cancelFriendshipRequest()">CANCEL REQUEST</button>
+        <button mat-button color="accent" *ngSwitchDefault (click)="sendFriendshipRequest()">SEND REQUEST</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
